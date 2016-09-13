@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionCache", "ExpressionCache.csproj", "{A8368B97-614B-4122-BA2D-37B2AEBEF378}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionCache", "ExpressionCache\ExpressionCache.csproj", "{A8368B97-614B-4122-BA2D-37B2AEBEF378}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionCacheTests", "..\ExpressionCacheTests\ExpressionCacheTests.csproj", "{E98D879D-418B-4E55-A7C9-8FB42C08A457}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionCacheTests", "ExpressionCacheTests\ExpressionCacheTests.csproj", "{E98D879D-418B-4E55-A7C9-8FB42C08A457}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

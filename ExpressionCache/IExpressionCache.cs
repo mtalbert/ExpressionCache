@@ -6,9 +6,9 @@ namespace ExpressionCache
     {
         IEnumerable<IExpressionCacheItem> List();
         IExpressionCacheItem Get(string expressionHash);
-        void Add(IExpressionCacheItem cacheItem);
+        bool Add(IExpressionCacheItem cacheItem);
         void Add(IEnumerable<IExpressionCacheItem> cacheItems);
-        void Remove(string expressionHash);
+        IExpressionCacheItem Remove(string expressionHash);
         void Remove(IEnumerable<string> expressionHashes);
         void Clear();
     }

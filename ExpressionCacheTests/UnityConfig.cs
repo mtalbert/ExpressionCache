@@ -41,7 +41,13 @@ namespace ExpressionCacheTests
 
             container.RegisterType<IExpressionCache, ExpressionCache.ExpressionCache>(
                 new PerResolveLifetimeManager(),
-                new InjectionFactory(c => new ExpressionCache.ExpressionCache(cachedItems))
+                new InjectionFactory(c =>
+                {
+                    var cache = new ExpressionCache.ExpressionCache();
+                    cache.Add(cachedItems);
+
+                    return cache;
+                })
                 );
 
             container.RegisterType<Mock<IExpressionCache>>(new PerResolveLifetimeManager(), new InjectionFactory(c =>
