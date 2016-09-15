@@ -10,7 +10,7 @@ namespace ExpressionCache
     /// <summary>
     /// Cache for storing Compiled Expressions by a hash of the text representation.
     /// </summary>
-    public class ExpressionCache : IExpressionCache, IDisposable
+    public class ExpressionCache : IExpressionCache
     {
         private readonly ObjectCache _cache;
         private readonly ExpressionCacheOptions _options;

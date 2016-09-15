@@ -44,6 +44,7 @@
     <Compile Include="ExpressionCache.cs" />
     <Compile Include="ExpressionCacheItem.cs" />
     <Compile Include="ExpressionCacheOptions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IExpressionCache.cs" />
     <Compile Include="IExpressionCacheItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

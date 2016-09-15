@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using ExpressionCache;
+using ExpressionCache.Extensions;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -38,6 +39,7 @@ namespace ExpressionCacheTests
         [TestCleanup]
         public void Cleanup()
         {
+            _expressionCache.Dispose();
             _expressionCache = null;
         }
         
@@ -57,11 +59,11 @@ namespace ExpressionCacheTests
         {
             const string expression = "1 + 1 = 2";
 
-            var cacheItem = new ExpressionCacheItem(expression.CalculateMD5Hash(), _alwaysTrue.Compile());
+            var cacheItem = new ExpressionCacheItem(expression.ToHash(), _alwaysTrue.Compile());
 
             _expressionCache.Add(cacheItem);
 
-            var cacheEntry = _expressionCache.Get(expression.CalculateMD5Hash());
+            var cacheEntry = _expressionCache.Get(expression.ToHash());
 
             Assert.IsNotNull(cacheEntry);
         }
@@ -71,9 +73,9 @@ namespace ExpressionCacheTests
         {
             var itemsToBeCached = new List<IExpressionCacheItem>
             {
-                new ExpressionCacheItem("Expression1".CalculateMD5Hash(), _alwaysTrue.Compile()),
-                new ExpressionCacheItem("Expression2".CalculateMD5Hash(), _alwaysTrue.Compile()),
-                new ExpressionCacheItem("Expression3".CalculateMD5Hash(), _alwaysTrue.Compile())
+                new ExpressionCacheItem("Expression1".ToHash(), _alwaysTrue.Compile()),
+                new ExpressionCacheItem("Expression2".ToHash(), _alwaysTrue.Compile()),
+                new ExpressionCacheItem("Expression3".ToHash(), _alwaysTrue.Compile())
             };
 
             _expressionCache.Add(itemsToBeCached.ToArray());
@@ -91,7 +93,7 @@ namespace ExpressionCacheTests
         public void Can_Get_Single_Entry_From_Cache()
         {
             const string expression = "2 + 2 = 4";
-            var cacheItem = _expressionCache.Get(expression.CalculateMD5Hash());
+            var cacheItem = _expressionCache.Get(expression.ToHash());
             Assert.IsNotNull(cacheItem);
         }
 
@@ -100,9 +102,9 @@ namespace ExpressionCacheTests
         {
             const string expression = "2 + 2 = 4";
 
-            _expressionCache.Remove(expression.CalculateMD5Hash());
+            _expressionCache.Remove(expression.ToHash());
 
-            Assert.IsNull(_expressionCache.Get(expression.CalculateMD5Hash()));
+            Assert.IsNull(_expressionCache.Get(expression.ToHash()));
         }
 
         [TestMethod]
@@ -135,7 +137,7 @@ namespace ExpressionCacheTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Cannot_Create_ExpressionCacheItem_With_Null_CompiledExpression()
         {
-            var expressionCacheItem = new ExpressionCacheItem("CacheItemExpression".CalculateMD5Hash(), null);
+            var expressionCacheItem = new ExpressionCacheItem("CacheItemExpression".ToHash(), null);
         }
 
     }

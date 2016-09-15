@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ExpressionCache;
+using ExpressionCache.Extensions;
 using Microsoft.Practices.Unity;
 using Moq;
 
@@ -35,8 +36,8 @@ namespace ExpressionCacheTests
 
             var cachedItems = new List<IExpressionCacheItem>
             {
-                new ExpressionCacheItem("2 + 2 = 4".CalculateMD5Hash(), alwaysTrue.Compile()),
-                new ExpressionCacheItem("s = \"\"".CalculateMD5Hash(), stringIsEmpty.Compile())
+                new ExpressionCacheItem("2 + 2 = 4".ToHash(), alwaysTrue.Compile()),
+                new ExpressionCacheItem("s = \"\"".ToHash(), stringIsEmpty.Compile())
             };
 
             container.RegisterType<IExpressionCache, ExpressionCache.ExpressionCache>(

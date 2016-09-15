@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ExpressionCache
 {
-    public interface IExpressionCache
+    public interface IExpressionCache : IDisposable
     {
         IEnumerable<IExpressionCacheItem> List();
         IExpressionCacheItem Get(string expressionHash);
