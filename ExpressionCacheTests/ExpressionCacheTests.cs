@@ -61,7 +61,7 @@ namespace ExpressionCacheTests
 
             var cacheItem = new ExpressionCacheItem(expression.ToHash(), _alwaysTrue.Compile());
 
-            _expressionCache.Add(cacheItem);
+            Assert.IsTrue(_expressionCache.Add(cacheItem));
 
             var cacheEntry = _expressionCache.Get(expression.ToHash());
 
@@ -102,8 +102,9 @@ namespace ExpressionCacheTests
         {
             const string expression = "2 + 2 = 4";
 
-            _expressionCache.Remove(expression.ToHash());
+            var cacheItem = _expressionCache.Remove(expression.ToHash());
 
+            Assert.IsNotNull(cacheItem);
             Assert.IsNull(_expressionCache.Get(expression.ToHash()));
         }
 
@@ -125,20 +126,5 @@ namespace ExpressionCacheTests
 
             Assert.AreEqual(0, _expressionCache.List().Count());
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Cannot_Create_ExpressionCacheItem_With_Null_Expression()
-        {
-            var expressionCacheItem = new ExpressionCacheItem(null, _alwaysTrue.Compile());
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Cannot_Create_ExpressionCacheItem_With_Null_CompiledExpression()
-        {
-            var expressionCacheItem = new ExpressionCacheItem("CacheItemExpression".ToHash(), null);
-        }
-
     }
 }

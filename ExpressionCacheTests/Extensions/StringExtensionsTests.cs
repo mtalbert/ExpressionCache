@@ -12,7 +12,7 @@ namespace ExpressionCacheTests.Extensions
     /// Summary description for StringExtensionsTest
     /// </summary>
     [TestClass]
-    public class StringExtensionsTest
+    public class StringExtensionsTests
     {
         [TestMethod]
         public void ToHash_Test()

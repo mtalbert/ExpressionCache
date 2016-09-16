@@ -77,8 +77,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExpressionCacheItemTests.cs" />
     <Compile Include="ExpressionCacheTests.cs" />
-    <Compile Include="Extensions\StringExtensionsTest.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnityConfig.cs" />
   </ItemGroup>
